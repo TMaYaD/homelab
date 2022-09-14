@@ -9,13 +9,15 @@ spec:
     namespace: argocd
   project: default
   source:
-    path: manifests/core-install
-    repoURL: https://github.com/argoproj/argo-cd/
-    targetRevision: stable
+    path: argocd
+    repoURL: https://github.com/TMaYaD/talos.git
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
       - PruneLast=true
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - RespectIgnoreDifferences=true
