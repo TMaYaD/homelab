@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openebs-jiva
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: openebs
+  project: default
+  source:
+    path: openebs-jiva
+    repoURL: https://github.com/TMaYaD/talos.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+      - PruneLast=true
+      - RespectIgnoreDifferences=true

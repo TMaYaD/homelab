@@ -180,6 +180,7 @@ data:
 
   # Build options/parameters to use with `kustomize build` (optional)
   # kustomize.buildOptions: --load_restrictor none
+  kustomize.buildOptions: --enable-helm
 
   # Per-version build options and binary paths
   # kustomize.path.v3.9.1: /custom-tools/kustomize_3_9
