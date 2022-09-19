@@ -5,6 +5,7 @@ helmCharts:
   - releaseName: openebs-jiva
     repo: https://openebs.github.io/jiva-operator
     name: jiva
+    namespace: openebs
     version: 3.3.0
     includeCRDs: true
     # valuesInline:
