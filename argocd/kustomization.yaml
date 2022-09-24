@@ -9,6 +9,7 @@ resources:
   - metallb.yaml
   - mosquitto.yaml
   - openebs-jiva.yaml
+  - pihole.yaml
 
 patchesStrategicMerge:
   - argocd-cm.yaml
