@@ -6,11 +6,5 @@ resources:
   #- github-creds.yaml
   - project.yaml
 
-  - argocd.yaml
-  - metallb.yaml
-  - mosquitto.yaml
-  - openebs-jiva.yaml
-  - pihole.yaml
-
 patchesStrategicMerge:
   - argocd-cm.yaml
