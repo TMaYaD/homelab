@@ -41,13 +41,34 @@ spec:
             requests:
               memory: "32Mi"
               cpu: "100m"
-      #     volumeMounts:
-      #       - name: pihole
-      #         mountPath: /etc/pihole
-      #         subPath: etc
-      #       - name: pihole
-      #         mountPath: /etc/dnsmasq.d
-      #         subPath: dnsmasq
+          # volumeMounts:
+          #   - name: pihole
+          #     mountPath: /etc/pihole
+          #     subPath: etc
+          #   - name: pihole
+          #     mountPath: /etc/dnsmasq.d
+          #     subPath: dnsmasq
+        - name: cloudflared
+          image: cloudflare/cloudflared:latest
+          ports:
+            - containerPort: 5053
+              name: dns
+              protocol: UDP
+            - containerPort: 5053
+              name: dns-tcp
+              protocol: TCP
+          args:
+            - proxy-dns
+            - --port=5053
+            - --upstream=https://1.1.1.1/dns-query
+            - --upstream=https://1.0.0.1/dns-query
+          resources:
+            limits:
+              memory: "64Mi"
+              cpu: "250m"
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
       # volumes:
       #   - name: pihole
       #     persistentVolumeClaim:
