@@ -41,14 +41,14 @@ spec:
             requests:
               memory: "32Mi"
               cpu: "100m"
-          volumeMounts:
-            - name: pihole
-              mountPath: /etc/pihole
-              subPath: etc
-            - name: pihole
-              mountPath: /etc/dnsmasq.d
-              subPath: dnsmasq
-      volumes:
-        - name: pihole
-          persistentVolumeClaim:
-            claimName: pihole
+      #     volumeMounts:
+      #       - name: pihole
+      #         mountPath: /etc/pihole
+      #         subPath: etc
+      #       - name: pihole
+      #         mountPath: /etc/dnsmasq.d
+      #         subPath: dnsmasq
+      # volumes:
+      #   - name: pihole
+      #     persistentVolumeClaim:
+      #       claimName: pihole
