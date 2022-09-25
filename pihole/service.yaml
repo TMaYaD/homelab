@@ -27,7 +27,7 @@ kind: Service
 metadata:
   name: pihole-backup
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 10.10.8.34
+    metallb.universe.tf/loadBalancerIPs: 10.10.8.35
 spec:
   selector:
     app.kubernetes.io/name: pihole
