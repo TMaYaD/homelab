@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transmission
+  labels:
+    app.kubernetes.io/name: transmission
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: transmission
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: transmission
+    spec:
+      containers:
+        - name: transmission
+          image: lscr.io/linuxserver/transmission:latest
+          ports:
+            - containerPort: 9091
+              name: web
+              protocol: TCP
+            - containerPort: 51413
+              name: torrent-tcp
+              protocol: TCP
+            - containerPort: 51413
+              name: torrent-udp
+              protocol: UDP
+          env:
+            - name: TZ
+              value: "Asia/Kolkata"
+            - name: USER
+              value: "transmission"
+            - name: PASS
+              value: "transmission"
+          resources:
+            limits:
+              memory: "64Mi"
+              cpu: "250m"
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
+          volumeMounts:
+            - name: transmission
+              mountPath: /config
+              subPath: config
+            - name: transmission
+              mountPath: /downloads
+              subPath: downloads
+            - name: transmission
+              mountPath: /watch
+              subPath: watch
+      volumes:
+        - name: transmission
+          persistentVolumeClaim:
+            claimName: transmission

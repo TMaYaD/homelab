@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: transmission
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 10.10.8.34
+spec:
+  selector:
+    app.kubernetes.io/name: transmission
+  type: LoadBalancer
+  ports:
+    - name: web
+      port: 9091
+      targetPort: 9091
+      protocol: TCP
+    - name: torrent-tcp
+      port: 51413
+      targetPort: 51413
+      protocol: TCP
+    - name: torrent-udp
+      port: 51413
+      targetPort: 51413
+      protocol: UDP
