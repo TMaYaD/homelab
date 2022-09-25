@@ -13,6 +13,9 @@ spec:
     repoURL: https://github.com/TMaYaD/talos.git
     targetRevision: HEAD
   syncPolicy:
+    # automated:
+    #   prune: true
+    #   selfHeal: true
     syncOptions:
       - ApplyOutOfSyncOnly=true
       - CreateNamespace=true
