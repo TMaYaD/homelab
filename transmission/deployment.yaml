@@ -52,6 +52,34 @@ spec:
             - name: transmission
               mountPath: /watch
               subPath: watch
+        - name: smb-server
+          image: dperson/samba
+          args:
+            - "-u"
+            - $(USERNAME);$(PASSWORD)
+            - "-s"
+            - share;/smbshare/;yes;no;no;all;none
+            - "-p"
+          env:
+            - name: PERMISSIONS
+              value: "0777"
+            - name: USERNAME
+              value: transmission
+            - name: PASSWORD
+              value: transmission
+          ports:
+            - containerPort: 445
+              protocol: TCP
+          resources:
+            limits:
+              memory: "64Mi"
+              cpu: "250m"
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
+          volumeMounts:
+            - mountPath: /smbshare
+              name: transmission
       volumes:
         - name: transmission
           persistentVolumeClaim:

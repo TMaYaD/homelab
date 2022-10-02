@@ -21,3 +21,7 @@ spec:
       port: 51413
       targetPort: 51413
       protocol: UDP
+    - name: smb-server
+      port: 445
+      targetPort: 445
+      protocol: TCP
