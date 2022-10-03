@@ -35,6 +35,10 @@ spec:
               value: "transmission"
             - name: PASS
               value: "transmission"
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
           resources:
             limits:
               memory: "64Mi"
@@ -67,15 +71,19 @@ spec:
               value: transmission
             - name: PASSWORD
               value: transmission
+            - name: USERID
+              value: "1000"
+            - name: GROUPID
+              value: "1000"
           ports:
             - containerPort: 445
               protocol: TCP
           resources:
             limits:
-              memory: "64Mi"
+              memory: "512Mi"
               cpu: "250m"
             requests:
-              memory: "32Mi"
+              memory: "128Mi"
               cpu: "100m"
           volumeMounts:
             - mountPath: /smbshare
