@@ -5,6 +5,7 @@ resources:
   - root.yaml
 
   - argocd.yaml
+  - home-assistant.yaml
   - metallb.yaml
   - mosquitto.yaml
   - openebs-jiva.yaml

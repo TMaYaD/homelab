@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-assistant
+  labels:
+    app.kubernetes.io/name: home-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: home-assistant
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: home-assistant
+    spec:
+      containers:
+        - name: core
+          image: ghcr.io/home-assistant/home-assistant:stable
+          ports:
+            - containerPort: 8123
+          volumeMounts:
+            - mountPath: "/config"
+              name: persistent-storage
+            - mountPath: "/config/configuration.yaml"
+              subPath: "configuration.yaml"
+              name: config
+            - mountPath: "/config/secrets.yaml"
+              subPath: "secrets.yaml"
+              name: secret
+          resources:
+            limits:
+              cpu: 100m
+              memory: 1024Mi
+            requests:
+              cpu: 100m
+              memory: 1024Mi
+      volumes:
+        - name: config
+          configMap:
+            name: home-assistant
+        - name: secret
+          secret:
+            secretName: home-assistant
+        - name: persistent-storage
+          persistentVolumeClaim:
+            claimName: home-assistant
