@@ -32,10 +32,10 @@ spec:
               name: secret
           resources:
             limits:
-              cpu: 100m
+              cpu: 1000m
               memory: 1024Mi
             requests:
-              cpu: 100m
+              cpu: 1000m
               memory: 1024Mi
       volumes:
         - name: config
