@@ -11,6 +11,7 @@ spec:
       app.kubernetes.io/name: home-assistant
   strategy:
     type: Recreate
+  revisionHistoryLimit: 2
   template:
     metadata:
       labels:
