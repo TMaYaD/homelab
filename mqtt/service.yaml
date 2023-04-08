@@ -4,6 +4,7 @@ metadata:
   name: mqtt
   annotations:
     metallb.universe.tf/loadBalancerIPs: 10.10.8.33
+    external-dns.alpha.kubernetes.io/hostname: mqtt.local
 spec:
   selector:
     app.kubernetes.io/role: mqtt

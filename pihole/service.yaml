@@ -4,6 +4,7 @@ metadata:
   name: pihole
   annotations:
     metallb.universe.tf/loadBalancerIPs: 10.10.8.53
+    external-dns.alpha.kubernetes.io/hostname: pihole.local
 spec:
   selector:
     app.kubernetes.io/name: pihole

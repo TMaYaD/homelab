@@ -3,6 +3,4 @@ kind: Kustomization
 
 resources:
   - deployment.yaml
-  #- secret.yaml
-  - service.yaml
-  - storage.yaml
+  - rbac.yaml

@@ -4,6 +4,7 @@ metadata:
   name: transmission
   annotations:
     metallb.universe.tf/loadBalancerIPs: 10.10.8.34
+    external-dns.alpha.kubernetes.io/hostname: transmission.local
 spec:
   selector:
     app.kubernetes.io/name: transmission
