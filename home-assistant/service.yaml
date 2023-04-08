@@ -5,6 +5,7 @@ metadata:
   annotations:
     # metallb.universe.tf/allow-shared-ip: "home-assistant-shared-ip"
     metallb.universe.tf/loadBalancerIPs: 10.10.8.36
+    external-dns.alpha.kubernetes.io/hostname: home-assistant.local
 spec:
   selector:
     app.kubernetes.io/name: home-assistant
