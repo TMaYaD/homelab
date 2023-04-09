@@ -19,5 +19,6 @@ helmCharts:
     #       enabled: true
 
 patchesStrategicMerge:
-  - config-patch.yaml
-  - daemonset-patch.yaml
+  - patches/config.yaml
+  - patches/daemonset.yaml
+  - patches/volume-policy.yaml
