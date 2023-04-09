@@ -1,0 +1,7 @@
+apiVersion: openebs.io/v1alpha1
+kind: JivaVolumePolicy
+metadata:
+  name: openebs-jiva-default-policy
+spec:
+  target:
+    replicationFactor: 2
