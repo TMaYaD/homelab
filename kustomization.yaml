@@ -12,3 +12,4 @@ resources:
   - openebs-jiva.yaml
   - pihole.yaml
   - transmission.yaml
+  - wyze-bridge.yaml

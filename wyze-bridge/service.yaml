@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wyze-bridge
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 10.10.8.37
+    external-dns.alpha.kubernetes.io/hostname: wyze-bridge.local
+spec:
+  selector:
+    app.kubernetes.io/name: wyze-bridge
+  type: LoadBalancer
+  ports:
+    - name: rtmp
+      protocol: TCP
+      port: 1935
+      targetPort: 1935
+    - name: rtsp
+      protocol: TCP
+      port: 8554
+      targetPort: 8554
+    - name: hls
+      protocol: TCP
+      port: 8888
+      targetPort: 8888
+    - name: webrtc
+      protocol: TCP
+      port: 8889
+      targetPort: 8889
+    - name: ice
+      protocol: UDP
+      port: 8189
+      targetPort: 8189
+    - name: web-ui
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
