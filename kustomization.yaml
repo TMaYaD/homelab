@@ -11,5 +11,6 @@ resources:
   - mosquitto.yaml
   - openebs-jiva.yaml
   - pihole.yaml
+  - sickgear.yaml
   - transmission.yaml
   - wyze-bridge.yaml
