@@ -4,7 +4,6 @@ metadata:
   name: transmission
   labels:
     app.kubernetes.io/name: transmission
-
 spec:
   replicas: 1
   selector:
