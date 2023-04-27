@@ -4,7 +4,6 @@ metadata:
   name: pihole
   labels:
     app.kubernetes.io/name: pihole
-
 spec:
   replicas: 1
   selector:
@@ -31,13 +30,10 @@ spec:
             - containerPort: 80
               name: admin
               protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: pihole
           env:
-            - name: TZ
-              value: "Asia/Kolkata"
-            - name: PIHOLE_DNS_
-              value: "127.0.0.1#5053"
-            - name: DNSMASQ_LISTENING
-              value: "all"
             - name: WEBPASSWORD
               valueFrom:
                 secretKeyRef:
