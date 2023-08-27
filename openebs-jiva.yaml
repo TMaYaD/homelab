@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: openebs-jiva
-    repoURL: https://github.com/TMaYaD/talos.git
+    repoURL: https://github.com/TMaYaD/homelab.git
     targetRevision: HEAD
   syncPolicy:
     # automated:
