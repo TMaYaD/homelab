@@ -8,3 +8,4 @@ resources:
 
 patchesStrategicMerge:
   - argocd-cm.yaml
+  - service.yaml
