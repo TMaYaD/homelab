@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: wyze-bridge
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 10.10.8.37
+    metallb.universe.tf/loadBalancerIPs: 10.10.8.40
     external-dns.alpha.kubernetes.io/hostname: wyze-bridge.local
 spec:
   selector:
