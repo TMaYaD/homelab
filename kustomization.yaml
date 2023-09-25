@@ -5,6 +5,7 @@ resources:
   - root.yaml
 
   - argocd.yaml
+  - esphome.yaml
   - external-dns.yaml
   - home-assistant.yaml
   - metallb.yaml
