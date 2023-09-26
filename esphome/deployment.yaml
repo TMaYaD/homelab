@@ -46,10 +46,9 @@ spec:
             # - name: ESPHOME_DASHBOARD_USE_U
           volumeMounts:
             - mountPath: "/config"
-              name: persistent-storage
-            - mountPath: "/config/secrets.yaml"
-              subPath: "secrets.yaml"
               name: config
+            - mountPath: "/config/.esphome"
+              name: persistent-storage
           resources:
             limits:
               cpu: 1000m
