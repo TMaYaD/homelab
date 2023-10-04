@@ -47,6 +47,8 @@ spec:
           volumeMounts:
             - mountPath: "/config"
               name: config
+            - mountPath: "/config/common"
+              name: config-common
             - mountPath: "/config/.esphome"
               name: persistent-storage
           resources:
@@ -60,6 +62,13 @@ spec:
         - name: config
           configMap:
             name: esphome
+        - name: config-common
+          projected:
+            sources:
+              - configMap:
+                  name: esphome-common
+              - secret:
+                  name: esphome
         - name: persistent-storage
           persistentVolumeClaim:
             claimName: esphome
