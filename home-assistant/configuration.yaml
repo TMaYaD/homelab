@@ -20,9 +20,12 @@ homeassistant:
 
 default_config:
 
-# http:
-#   ip_ban_enabled: false
-#   login_attempts_threshold: 5
-#   use_x_forwarded_for: true
-#   trusted_proxies:
-#     - 10.10.8.36
+http:
+  # ip_ban_enabled: false
+  # login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 10.244.0.0/16
+
+alexa:
+  smart_home:
