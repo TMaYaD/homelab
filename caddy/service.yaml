@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: caddy
+  annotations:
+    # metallb.universe.tf/allow-shared-ip: "home-assistant-shared-ip"
+    metallb.universe.tf/loadBalancerIPs: 10.10.8.63
+    external-dns.alpha.kubernetes.io/hostname: caddy.local
+spec:
+  selector:
+    app.kubernetes.io/name: caddy
+  type: LoadBalancer
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443
