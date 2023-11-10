@@ -2,6 +2,10 @@ ha.subsnet.in {
   reverse_proxy home-assistant
 }
 
+cd.subsnet.in {
+  reverse_proxy argocd-server.argocd.svc.cluster.local
+}
+
 :80 {
   respond "I am http"
 }
