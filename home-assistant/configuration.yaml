@@ -20,6 +20,8 @@ homeassistant:
 
 default_config:
 
+wake_on_lan:
+
 http:
   # ip_ban_enabled: false
   # login_attempts_threshold: 5
