@@ -33,3 +33,9 @@ alexa:
   smart_home:
 
 automation: !include automations.yaml
+
+sensor:
+  # Minimal configuration of the standard time and date sensor
+  - platform: time_date
+    display_options:
+    - 'date_time_iso'
