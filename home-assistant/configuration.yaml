@@ -20,6 +20,8 @@ homeassistant:
 
 default_config:
 
+wake_on_lan:
+
 http:
   # ip_ban_enabled: false
   # login_attempts_threshold: 5
@@ -29,3 +31,11 @@ http:
 
 alexa:
   smart_home:
+
+automation: !include automations.yaml
+
+sensor:
+  # Minimal configuration of the standard time and date sensor
+  - platform: time_date
+    display_options:
+    - 'date_time_iso'
