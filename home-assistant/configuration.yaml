@@ -29,3 +29,5 @@ http:
 
 alexa:
   smart_home:
+
+automation: !include automations.yaml
