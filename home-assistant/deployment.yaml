@@ -28,6 +28,9 @@ spec:
             - mountPath: "/config/configuration.yaml"
               subPath: "configuration.yaml"
               name: config
+            - mountPath: "/config/ui-lovelace.yaml"
+              subPath: "ui-lovelace.yaml"
+              name: config
             - mountPath: "/config/secrets.yaml"
               subPath: "secrets.yaml"
               name: secret

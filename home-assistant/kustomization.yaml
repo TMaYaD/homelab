@@ -5,6 +5,7 @@ configMapGenerator:
 - name: home-assistant
   files:
   - configuration.yaml
+  - ui-lovelace.yaml
 
 # secretGenerator:
 # - name: home-assistant
