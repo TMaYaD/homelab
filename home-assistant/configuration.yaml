@@ -20,6 +20,9 @@ homeassistant:
 
 default_config:
 
+lovelace:
+  mode: yaml
+
 wake_on_lan:
 
 http:
@@ -39,3 +42,4 @@ sensor:
   - platform: time_date
     display_options:
     - 'date_time_iso'
+    - 'date'
