@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: pihole
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 10.10.8.53
+    metallb.universe.tf/loadBalancerIPs: 10.10.10.69
     external-dns.alpha.kubernetes.io/hostname: pihole.local
 spec:
   selector:
@@ -28,7 +28,7 @@ kind: Service
 metadata:
   name: pihole-backup
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 10.10.8.35
+    metallb.universe.tf/loadBalancerIPs: 10.10.10.96
 spec:
   selector:
     app.kubernetes.io/name: pihole

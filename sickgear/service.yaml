@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: sickgear
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 10.10.8.38
+    metallb.universe.tf/address-pool: address-pool
     external-dns.alpha.kubernetes.io/hostname: sickgear.local
 spec:
   selector:
