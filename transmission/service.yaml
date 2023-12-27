@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: transmission
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 10.10.8.34
+    metallb.universe.tf/address-pool: address-pool
     external-dns.alpha.kubernetes.io/hostname: transmission.local
 spec:
   selector:
