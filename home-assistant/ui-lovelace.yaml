@@ -4,7 +4,7 @@ views: []
 resources:
   - url: "/hacsfiles/mushroom-strategy/mushroom-strategy.js"
     type: module
-  - url: "/local/community/lovelace-mushroom/mushroom.js"
+  - url: "/hacsfiles/lovelace-mushroom/mushroom.js"
     type: module
-  - url: "/local/community/mini-graph-card/mini-graph-card-bundle.js"
+  - url: "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js"
     type: module

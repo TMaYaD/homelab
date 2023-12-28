@@ -32,6 +32,8 @@ http:
   trusted_proxies:
     - 10.244.0.0/16
 
+api:
+
 alexa:
   smart_home:
 
