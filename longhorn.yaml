@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openebs-jiva
+  name: longhorn
   namespace: argocd
 spec:
   destination:
     name: in-cluster
-    namespace: openebs
+    namespace: longhorn-system
   project: default
   source:
-    path: openebs-jiva
+    path: longhorn
     repoURL: https://github.com/TMaYaD/homelab.git
     targetRevision: HEAD
   syncPolicy:

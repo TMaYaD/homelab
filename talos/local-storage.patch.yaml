@@ -1,17 +1,17 @@
 machine:
   install:
-    image: factory.talos.dev/installer/c9078f9419961640c712a8bf2bb9174933dfcf1da383fd8ea2b7dc21493f8bac:v1.6.1
+    image: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245:v1.6.3
 
   disks:
     - device: /dev/sda
       partitions:
-        - mountpoint: /var/openebs/local
+        - mountpoint: /var/lib/longhorn
 
   kubelet:
     extraMounts:
-      - destination: /var/openebs/local
+      - destination: /var/lib/longhorn
         type: bind
-        source: /var/openebs/local
+        source: /var/lib/longhorn
         options:
           - bind
           - rshared

@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - https://github.com/longhorn/longhorn/raw/v1.6.0-rc2/deploy/longhorn.yaml
+
+patchesStrategicMerge:
+  - patches/namespace.yaml
+  - patches/storage-class.yaml
