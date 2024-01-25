@@ -9,9 +9,9 @@ resources:
   - esphome.yaml
   - external-dns.yaml
   - home-assistant.yaml
+  - longhorn.yaml
   - metallb.yaml
   - mosquitto.yaml
-  - openebs-jiva.yaml
   - pihole.yaml
   - sickgear.yaml
   - transmission.yaml
