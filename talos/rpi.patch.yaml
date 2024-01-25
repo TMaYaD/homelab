@@ -1,0 +1,6 @@
+machine:
+  install:
+    disk: /dev/mmcblk0
+
+cluster:
+  allowSchedulingOnMasters: true

@@ -1,0 +1,18 @@
+machine:
+  install:
+    image: factory.talos.dev/installer/c9078f9419961640c712a8bf2bb9174933dfcf1da383fd8ea2b7dc21493f8bac:v1.6.1
+
+  disks:
+    - device: /dev/sda
+      partitions:
+        - mountpoint: /var/openebs/local
+
+  kubelet:
+    extraMounts:
+      - destination: /var/openebs/local
+        type: bind
+        source: /var/openebs/local
+        options:
+          - bind
+          - rshared
+          - rw

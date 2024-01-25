@@ -1,0 +1,4 @@
+controlplane.yaml
+worker.yaml
+secrets.yaml
+talosconfig
