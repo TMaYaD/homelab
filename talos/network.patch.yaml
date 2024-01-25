@@ -1,0 +1,15 @@
+machine:
+  network:
+    interfaces:
+      - interface: eth0
+        dhcp: true
+        vip:
+          ip: 10.10.10.6
+
+    nameservers:
+      - 1.1.1.1
+      - 8.8.8.8
+
+cluster:
+  controlPlane:
+    endpoint: https://10.10.10.6:6443/

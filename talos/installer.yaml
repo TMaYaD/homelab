@@ -1,0 +1,7 @@
+# `curl -X POST --data-binary @installer.yaml https://factory.talos.dev/schematics`
+# More info: https://www.talos.dev/v1.6/talos-guides/install/boot-assets/
+
+customization:
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/iscsi-tools
