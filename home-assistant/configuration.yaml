@@ -22,6 +22,13 @@ default_config:
 
 lovelace:
   mode: yaml
+  resources:
+    - url: "/hacsfiles/mushroom-strategy/mushroom-strategy.js"
+      type: module
+    - url: "/hacsfiles/lovelace-mushroom/mushroom.js"
+      type: module
+    - url: "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js"
+      type: module
 
 wake_on_lan:
 
