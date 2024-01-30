@@ -3,14 +3,12 @@ machine:
     interfaces:
       - deviceSelector:
           driver: bcmgenet # should select any hardware network device, if you have just one, it will be selected
-        dhcp: true
-        vip:
-          ip: 10.10.8.6
+        dhcp: false
         vlans:
           - vlanId: 2
             dhcp: true
             vip:
-              ip: 10.10.10.6
+              ip: 10.10.11.1
 
     nameservers:
       - 1.1.1.1
@@ -18,4 +16,4 @@ machine:
 
 cluster:
   controlPlane:
-    endpoint: https://10.10.8.6:6443/
+    endpoint: https://10.10.11.1:6443/
