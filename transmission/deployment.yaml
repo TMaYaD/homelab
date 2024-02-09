@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: transmission
-          image: lscr.io/linuxserver/transmission:latest
+          image: lscr.io/linuxserver/transmission:4.0.5
           ports:
             - containerPort: 9091
               name: web
@@ -43,10 +43,10 @@ spec:
               value: "1000"
           resources:
             limits:
-              memory: "64Mi"
+              memory: "512Mi"
               cpu: "250m"
             requests:
-              memory: "32Mi"
+              memory: "128Mi"
               cpu: "100m"
           volumeMounts:
             - name: transmission
