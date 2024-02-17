@@ -49,7 +49,11 @@ alexa:
     client_id: !secret alexa_client_id
     client_secret: !secret alexa_client_secret
 
-automation: !include automations.yaml
+# My own handmade automations
+automation manual: !include_dir_merge_list automations/
+
+# Automations I create in the UI
+automation ui: !include automations.yaml
 
 sensor:
   # Minimal configuration of the standard time and date sensor
