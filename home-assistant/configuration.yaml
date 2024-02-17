@@ -18,6 +18,8 @@ homeassistant:
   #       - fd00::/8
   #     allow_bypass_login: true
 
+  packages: !include_dir_named packages
+
 default_config:
 
 lovelace:
