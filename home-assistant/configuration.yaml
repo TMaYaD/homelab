@@ -61,3 +61,69 @@ sensor:
     display_options:
     - 'date_time_iso'
     - 'date'
+
+# {"Vendor":"VOLTAS","Model":1,"Mode":"Cool","Power":"Off","Celsius":"On","Temp":27,"FanSpeed":"Auto","SwingV":"Auto","SwingH":"Auto","Quiet":"Off","Turbo":"Off","Econo":"On","Light":"Off","Filter":"Off","Clean":"Off","Beep":"Off","Sleep":0, "StateMode":"StoreOnly"}
+mqtt:
+  - climate:
+      name: "Master AC"
+      unique_id: id.master_ac
+      device:
+        identifiers: id.master_ac
+        suggested_area: master
+        via_device: ebf786d2042ab8ea2eadc47d59b2102f # master ir
+      modes:
+      - "off"
+      - cool
+      - dry
+      - fan_only
+      swing_modes:
+      - "auto"
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      min_temp: 16
+      max_temp: 30
+      temp_step: 1
+      initial: 25
+
+      temperature_command_topic: "master/ir/cmnd/IRHVAC"
+      temperature_command_template: '{"Temp": {{ value|int }}, "Incremental": true}'
+
+      mode_command_topic: "master/ir/cmnd/IRHVAC"
+      mode_command_template: '{"Power": "{{value if value=="off" else "on"}}", "Mode": "{{ value }}", "Incremental": true}'
+
+      fan_mode_command_topic: "master/ir/cmnd/IRHVAC"
+      fan_mode_command_template: '{"FanSpeed": "{{ value }}", "Incremental": true}'
+
+  - climate:
+      name: "Office AC"
+      unique_id: id.office_ac
+      device:
+        identifiers: id.office_ac
+        suggested_area: office
+        via_device: b4f07c1dbd29529d50c6d4e054b6ae45 # office ir
+      modes:
+      - "off"
+      - cool
+      - dry
+      - fan_only
+      swing_modes:
+      - "auto"
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      min_temp: 16
+      max_temp: 30
+      temp_step: 1
+      initial: 25
+
+      temperature_command_topic: "office/ir/cmnd/IRHVAC"
+      temperature_command_template: '{"Temp": {{ value|int }}, "Incremental": true}'
+
+      mode_command_topic: "office/ir/cmnd/IRHVAC"
+      mode_command_template: '{"Power": "{{value if value=="off" else "on"}}", "Mode": "{{ value }}", "Incremental": true}'
+
+      fan_mode_command_topic: "office/ir/cmnd/IRHVAC"
+      fan_mode_command_template: '{"FanSpeed": "{{ value }}", "Incremental": true}'
