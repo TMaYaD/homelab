@@ -70,7 +70,6 @@ mqtt:
       device:
         identifiers: id.master_ac
         suggested_area: master
-        via_device: ebf786d2042ab8ea2eadc47d59b2102f # master ir
       modes:
       - "off"
       - cool
@@ -102,7 +101,6 @@ mqtt:
       device:
         identifiers: id.office_ac
         suggested_area: office
-        via_device: b4f07c1dbd29529d50c6d4e054b6ae45 # office ir
       modes:
       - "off"
       - cool
