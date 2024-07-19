@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: broker
-          image: eclipse-mosquitto:2.0.15
+          image: eclipse-mosquitto:2.0.18
           # resources:
           #   limits:
           #     memory: "0.6Gi"
