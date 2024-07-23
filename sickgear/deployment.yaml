@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: sickgear
-        image: lscr.io/linuxserver/sickgear:3.30.5
+        image: lscr.io/linuxserver/sickgear:3.32.2
         env:
         - name: TZ
           value: Asia/Kolkata
