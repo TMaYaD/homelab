@@ -6,6 +6,10 @@ cd.subsnet.in {
   reverse_proxy argocd-server.argocd.svc.cluster.local
 }
 
+3d.subsnet.in {
+  reverse_proxy 10.10.11.109
+}
+
 :80 {
   respond "I am http"
 }

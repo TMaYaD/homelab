@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: core
-          image: ghcr.io/esphome/esphome:2024.7.0
+          image: ghcr.io/esphome/esphome:2024.7.1
           ports:
             - containerPort: 6052
           env:
