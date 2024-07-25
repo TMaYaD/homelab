@@ -6,13 +6,13 @@ resources:
 
   - argocd.yaml
   - caddy.yaml
-  - esphome.yaml
+  # - esphome.yaml
   - external-dns.yaml
   - home-assistant.yaml
   - longhorn.yaml
   - metallb.yaml
   - mosquitto.yaml
   - pihole.yaml
-  - sickgear.yaml
+  # - sickgear.yaml
   - transmission.yaml
-  - wyze-bridge.yaml
+  # - wyze-bridge.yaml
