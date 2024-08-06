@@ -1,0 +1,43 @@
+# Cronjob to run the reconciler every 5 minutes
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: esphome-reconciler
+  labels:
+    app.kubernetes.io/name: esphome-reconciler
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: reconciler
+              image: ghcr.io/tmayad/esphome-plus
+              env:
+                - name: KUBECONFIG
+                  value: /config/kubeconfig
+                - name: KUBECONFIG_PATH
+                  value: /config/kubeconfig
+                - name: KUBECONFIG_CONTENT
+                  value: |
+                    apiVersion: v1
+                    kind: Config
+                    clusters:
+                    - cluster:
+                        server: https://kubernetes.default.svc
+                      name: default
+                    contexts:
+                    - context:
+                        cluster: default
+                        namespace: esphome
+                        user: default
+                      name: default
+                    current-context: default
+                    users:
+                    - name: default
+                      user:
+                        tokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+              volumeMounts:
+                - mountPath: /config
+                  name: config
