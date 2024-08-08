@@ -4,4 +4,8 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
-  - config.yaml
+
+configMapGenerator:
+- name: mosquitto
+  files:
+  - mosquitto.conf
