@@ -12,3 +12,6 @@ configMapGenerator:
 # - name: mosquitto-conf.d
 #   files:
 #   - flespi.conf
+
+generatorOptions:
+ disableNameSuffixHash: true
