@@ -33,7 +33,13 @@ spec:
             - name: config
               mountPath: "/mosquitto/config"
               readOnly: true
+            # - name: conf.d
+            #   mountPath: "/mosquitto/config/conf.d"
+            #   readOnly: true
       volumes:
         - name: config
           configMap:
             name: mosquitto
+        # - name: conf.d
+        #   configMap:
+        #     name: mosquitto-conf.d

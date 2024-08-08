@@ -9,3 +9,6 @@ configMapGenerator:
 - name: mosquitto
   files:
   - mosquitto.conf
+# - name: mosquitto-conf.d
+#   files:
+#   - flespi.conf
