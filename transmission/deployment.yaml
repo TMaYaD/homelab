@@ -53,11 +53,10 @@ spec:
               mountPath: /config
               subPath: config
             - name: transmission
-              mountPath: /downloads
-              subPath: downloads
-            - name: transmission
               mountPath: /watch
               subPath: watch
+            - name: downloads
+              mountPath: /downloads
         - name: smb-server
           image: dperson/samba
           args:
@@ -89,8 +88,11 @@ spec:
               cpu: "100m"
           volumeMounts:
             - mountPath: /smbshare
-              name: transmission
+              name: downloads
       volumes:
         - name: transmission
           persistentVolumeClaim:
             claimName: transmission
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: downloads
