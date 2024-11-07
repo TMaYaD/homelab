@@ -14,5 +14,6 @@ resources:
   - mosquitto.yaml
   - pihole.yaml
   # - sickgear.yaml
+  - syncthing.yaml
   - transmission.yaml
   # - wyze-bridge.yaml
