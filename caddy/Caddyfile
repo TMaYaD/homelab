@@ -6,6 +6,12 @@ cd.subsnet.in {
   reverse_proxy argocd-server.argocd.svc.cluster.local
 }
 
+sync.subsnet.in {
+  reverse_proxy syncthing:8384 {
+    header_up Host {upstream_hostport}
+  }
+}
+
 3d.subsnet.in {
   reverse_proxy 10.10.11.109
 }
