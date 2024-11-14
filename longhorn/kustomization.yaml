@@ -11,6 +11,9 @@ helmCharts:
     valuesInline:
       persistence:
         defaultClassReplicaCount: 2
+      service:
+        ui:
+          type: LoadBalancer
 
 resources:
   - namespace.yaml
