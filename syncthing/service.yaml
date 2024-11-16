@@ -10,12 +10,16 @@ spec:
     app.kubernetes.io/name: syncthing
   type: LoadBalancer
   ports:
-    - port: 8384
+    - name: web
+      port: 8384
       protocol: TCP
-    - port: 22000
+    - name: tcp-transfer
+      port: 22000
       protocol: TCP
-    - port: 22000
+    - name: udp-transfer
+      port: 22000
       protocol: UDP
-    - port: 21027
+    - name: local-discovery
+      port: 21027
       protocol: UDP
 
