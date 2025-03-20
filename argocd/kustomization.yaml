@@ -3,7 +3,7 @@ kind: Kustomization
 
   #- github-creds.yaml
 resources:
-- https://github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.14.6
+- https://github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.14.7
 #- github-creds.yaml
 - project.yaml
 
