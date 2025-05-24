@@ -1,5 +1,5 @@
 ha.subsnet.in {
-  reverse_proxy home-assistant
+  reverse_proxy 10.10.11.6:8123
 }
 
 cd.subsnet.in {
