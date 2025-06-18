@@ -6,9 +6,6 @@ metadata:
     app.kubernetes.io/name: pihole
 data:
   TZ: "Asia/Kolkata"
-  PIHOLE_DNS_: "127.0.0.1#5053"
-  DNSMASQ_LISTENING: "all"
-  REV_SERVER: "true"
-  REV_SERVER_CIDR: "10.10.8.0/22"
-  REV_SERVER_TARGET: "10.10.8.1"
-  REV_SERVER_DOMAIN: "local"
+  FTLCONF_dns_upstreams: "127.0.0.1#5053"
+  FTLCONF_dns_revServers: 'true,10.10.8.0/22,10.10.8.1,local'
+  FTLCONF_dns_listeningMode: "all"
