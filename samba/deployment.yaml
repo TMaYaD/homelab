@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samba
+  labels:
+    app.kubernetes.io/name: samba
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: samba
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: samba
+    spec:
+      containers:
+        - name: smb-server
+          image: dperson/samba
+          args:
+            - "-u"
+            - $(USERNAME);$(PASSWORD)
+            - "-s"
+            - share;/smbshare/;yes;no;no;all;none
+            - "-p"
+          env:
+            - name: PERMISSIONS
+              value: "0777"
+            - name: USERNAME
+              value: transmission
+            - name: PASSWORD
+              value: transmission
+            - name: USERID
+              value: "1000"
+            - name: GROUPID
+              value: "1000"
+          ports:
+            - containerPort: 445
+              protocol: TCP
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "250m"
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+          volumeMounts:
+            - mountPath: /smbshare
+              name: downloads
+      volumes:
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: downloads

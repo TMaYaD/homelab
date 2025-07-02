@@ -57,38 +57,6 @@ spec:
               subPath: watch
             - name: downloads
               mountPath: /downloads
-        - name: smb-server
-          image: dperson/samba
-          args:
-            - "-u"
-            - $(USERNAME);$(PASSWORD)
-            - "-s"
-            - share;/smbshare/;yes;no;no;all;none
-            - "-p"
-          env:
-            - name: PERMISSIONS
-              value: "0777"
-            - name: USERNAME
-              value: transmission
-            - name: PASSWORD
-              value: transmission
-            - name: USERID
-              value: "1000"
-            - name: GROUPID
-              value: "1000"
-          ports:
-            - containerPort: 445
-              protocol: TCP
-          resources:
-            limits:
-              memory: "512Mi"
-              cpu: "250m"
-            requests:
-              memory: "128Mi"
-              cpu: "100m"
-          volumeMounts:
-            - mountPath: /smbshare
-              name: downloads
       volumes:
         - name: transmission
           persistentVolumeClaim:
