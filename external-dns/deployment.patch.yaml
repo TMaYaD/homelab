@@ -29,6 +29,8 @@ spec:
         - --pihole-api-version=6
         # Change this to the actual address of your Pi-hole web server
         - --pihole-server=http://pihole.default.svc.cluster.local
+        # Adguard webhook
+        - --adguard-webhook-url=http://external-dns-adguard.default.svc.cluster.local:8888
         resources:
           limits:
             cpu: 100m
