@@ -13,6 +13,7 @@ resources:
   - metallb.yaml
   - mosquitto.yaml
   - pihole.yaml
+  - samba.yaml
   # - sickgear.yaml
   - transmission.yaml
   # - wyze-bridge.yaml
