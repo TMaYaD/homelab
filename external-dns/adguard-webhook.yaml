@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns-adguard
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-dns
+      component: adguard-webhook
+  template:
+    metadata:
+      labels:
+        app: external-dns
+        component: adguard-webhook
+    spec:
+      serviceAccountName: external-dns
+      containers:
+      - name: adguard-webhook
+      image: ghcr.io/muhlba91/external-dns-provider-adguard:$RELEASE_VERSION
+      ports:
+        - containerPort: 8888
+          name: http
+        - containerPort: 8080
+          name: healthz
+      livenessProbe:
+        httpGet:
+          path: /healthz
+          port: healthz
+        initialDelaySeconds: 10
+        timeoutSeconds: 5
+      readinessProbe:
+        httpGet:
+          path: /healthz
+          port: healthz
+        initialDelaySeconds: 10
+        timeoutSeconds: 5
+      envFrom:
+      - secretRef:
+          name: adguard-configuration
+      env:
+        - name: LOG_LEVEL
+          value: debug
+        - name: DRY_RUN
+          value: "false"

@@ -1,0 +1,3 @@
+ADGUARD_URL: http://adguard.default.svc.cluster.local
+ADGUARD_USER: admin
+ADGUARD_PASSWORD: admin

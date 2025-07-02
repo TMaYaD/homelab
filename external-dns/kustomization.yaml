@@ -6,6 +6,12 @@ resources:
 
 patches:
 - path: deployment.patch.yaml
+- path: adguard-webhook.yaml
+
+secretGenerator:
+- name: adguard-configuration
+  files:
+  - adguard-configuration.yaml
 
 images:
   - name: registry.k8s.io/external-dns/external-dns
