@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyfin
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: jellyfin
+  project: default
+  source:
+    path: jellyfin
+    repoURL: https://github.com/TMaYaD/homelab.git
+    targetRevision: HEAD
+  syncPolicy:
+    # automated:
+    #   prune: true
+    #   selfHeal: true
+    syncOptions:
+      - PruneLast=true
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - RespectIgnoreDifferences=true
