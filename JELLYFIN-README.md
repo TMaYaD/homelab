@@ -1,71 +1,91 @@
 # Jellyfin Media Server Setup
 
-This document describes the Jellyfin media server setup following your project's **exact pattern** of using raw Kubernetes manifests with Kustomize and ArgoCD.
+This document describes the Jellyfin media server setup following your project's **Helm chart + Kustomize pattern** exactly like Longhorn.
 
 ## 🏗️ Architecture
 
-Following your project's consistent pattern:
-- **📁 Directory Structure**: `jellyfin/` with individual manifest files
-- **📦 Kustomize**: Organizes resources in `jellyfin/kustomization.yaml`
+Following your project's **Longhorn pattern**:
+- **� Helm Charts**: Using Kustomize's `helmCharts` feature
+- **� TrueCharts**: Professional Jellyfin Helm chart
+- **📁 Directory Structure**: `jellyfin/` with kustomization + namespace
 - **🚀 ArgoCD**: Managed via `jellyfin.yaml` Application
-- **🔧 Raw Manifests**: No Helm charts, just Kubernetes YAML
+- **🎯 Dedicated Namespace**: `jellyfin` namespace
 
 ## 📂 File Structure
 
 ```
 jellyfin/
-├── deployment.yaml    # Jellyfin deployment with volume mounts
-├── service.yaml       # LoadBalancer with MetalLB + external-dns
-├── storage.yaml       # PVCs for config, cache, and media
-└── kustomization.yaml # Resource organization
+├── kustomization.yaml # Helm chart deployment + values
+├── namespace.yaml     # Dedicated namespace definition
+└── .gitignore        # Ignore Helm chart artifacts
 
-jellyfin.yaml          # ArgoCD Application (root level)
+jellyfin.yaml         # ArgoCD Application (root level)
+```
+
+**Exactly like Longhorn:**
+```
+longhorn/
+├── kustomization.yaml # ✅ Same pattern
+├── namespace.yaml     # ✅ Same pattern
+└── .gitignore        # ✅ Same pattern
+
+longhorn.yaml         # ✅ Same pattern
 ```
 
 ## 🔧 Components
 
-### 1. **Deployment** (`jellyfin/deployment.yaml`)
-- **Image**: `jellyfin/jellyfin:10.9.11`
-- **Resources**: 1-2 CPU cores, 2-4GB RAM
-- **Strategy**: `Recreate` (database constraints)
-- **Health Checks**: HTTP probes on `/health`
-- **Environment**: Published server URL configuration
+### 1. **Helm Chart Deployment** (`jellyfin/kustomization.yaml`)
+Following **Longhorn's exact pattern**:
+- **Chart**: TrueCharts Jellyfin (`charts.truecharts.org`)
+- **Version**: 23.0.10 (latest stable)
+- **Namespace**: `jellyfin` (dedicated like `longhorn-system`)
+- **Values**: Inline configuration for your infrastructure
 
-### 2. **Service** (`jellyfin/service.yaml`)
-- **Type**: LoadBalancer (MetalLB integration)
-- **Annotations**: 
-  - `metallb.universe.tf/address-pool: address-pool`
-  - `external-dns.alpha.kubernetes.io/hostname: jellyfin.local`
-- **Ports**: 80, 443, 8096
-
-### 3. **Storage** (`jellyfin/storage.yaml`)
-Three persistent volumes using Longhorn:
-- **Config**: 10Gi (ReadWriteOnce) - Settings and databases
-- **Cache**: 20Gi (ReadWriteOnce) - Transcoding cache
-- **Media**: 500Gi (ReadWriteMany) - Media files
-
-### 4. **Kustomization** (`jellyfin/kustomization.yaml`)
-Simple resource list following project pattern:
+### 2. **Namespace** (`jellyfin/namespace.yaml`)
+Dedicated namespace following Longhorn pattern:
 ```yaml
-resources:
-  - deployment.yaml
-  - service.yaml
-  - storage.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jellyfin
+  labels:
+    kubernetes.io/metadata.name: jellyfin
 ```
 
-### 5. **ArgoCD Application** (`jellyfin.yaml`)
-Follows identical pattern as other services:
+### 3. **ArgoCD Application** (`jellyfin.yaml`)
+Identical pattern to Longhorn:
 - **Source**: Git path `jellyfin/`
-- **Destination**: `default` namespace
-- **Sync Options**: Same as other services
+- **Destination**: `jellyfin` namespace
+- **Sync Options**: Same as Longhorn
+
+## 🎛️ Configuration
+
+### Helm Values (in `kustomization.yaml`)
+```yaml
+valuesInline:
+  service:
+    main:
+      type: LoadBalancer  # MetalLB integration
+      annotations:
+        metallb.universe.tf/address-pool: address-pool
+        external-dns.alpha.kubernetes.io/hostname: jellyfin.local
+
+  persistence:
+    config: 10Gi    # Configuration & databases
+    cache: 20Gi     # Transcoding cache  
+    media: 500Gi    # Media library
+
+  resources:
+    limits: 2 CPU, 4GB RAM
+    requests: 1 CPU, 2GB RAM
+```
 
 ## 🌐 Network Access
 
 Jellyfin will be accessible at:
 - **Primary**: `http://jellyfin.local:8096`
-- **HTTP**: `http://jellyfin.local` (port 80)
-- **HTTPS**: `https://jellyfin.local` (port 443)
-- **Direct**: `http://jellyfin.local:8096`
+- **Via MetalLB**: Integrated with your LoadBalancer setup
+- **External DNS**: Automatic DNS record creation
 
 ## 🚀 Deployment
 
@@ -73,14 +93,17 @@ Jellyfin will be accessible at:
 2. **Commit Changes**:
    ```bash
    git add .
-   git commit -m "Add Jellyfin media server"
+   git commit -m "Add Jellyfin using Helm chart pattern (like Longhorn)"
    git push
    ```
-3. **ArgoCD Sync**: ArgoCD will automatically detect and deploy
+3. **ArgoCD Sync**: ArgoCD will automatically:
+   - Download the TrueCharts Helm chart
+   - Apply your custom values
+   - Deploy to `jellyfin` namespace
 4. **Monitor**: 
    ```bash
-   kubectl get pods -l app.kubernetes.io/name=jellyfin
-   kubectl get pvc | grep jellyfin
+   kubectl get pods -n jellyfin
+   kubectl get pvc -n jellyfin
    ```
 
 ## 🎛️ Initial Configuration
@@ -96,56 +119,65 @@ Jellyfin will be accessible at:
 
 | Volume | Path | Size | Purpose |
 |--------|------|------|---------|
-| jellyfin-config | `/config` | 10Gi | Configuration, databases, metadata |
-| jellyfin-cache | `/cache` | 20Gi | Transcoding cache and temp files |
-| jellyfin-media | `/media` | 500Gi | Your media collection |
+| config | `/config` | 10Gi | Configuration, databases, metadata |
+| cache | `/cache` | 20Gi | Transcoding cache and temp files |
+| media | `/media` | 500Gi | Your media collection |
 
 ## 🔧 Maintenance
 
 ### View Logs
 ```bash
-kubectl logs -l app.kubernetes.io/name=jellyfin -f
+kubectl logs -n jellyfin -l app.kubernetes.io/name=jellyfin -f
 ```
 
 ### Check Storage
 ```bash
-kubectl get pvc | grep jellyfin
-kubectl describe pvc jellyfin-media
+kubectl get pvc -n jellyfin
+kubectl describe pvc -n jellyfin
 ```
 
-### Scale Resources
-Edit `jellyfin/deployment.yaml` and commit to Git.
+### Update Configuration
+Edit `jellyfin/kustomization.yaml` `valuesInline` section and commit to Git.
 
-### Updates
-Update image tag in `jellyfin/deployment.yaml` and commit.
-
-## 🔒 Security Considerations
-
-- Jellyfin runs as non-root user
-- Network access controlled by LoadBalancer
-- Storage isolated to specific PVCs
-- Health checks ensure availability
+### Update Chart Version
+Edit `version:` in `jellyfin/kustomization.yaml` and commit.
 
 ## 🔄 Integration with Existing Stack
 
-This setup integrates perfectly with your existing infrastructure:
+This setup integrates perfectly with your existing infrastructure using the **same pattern as Longhorn**:
+
 - **✅ Longhorn**: Provides all persistent storage
 - **✅ MetalLB**: LoadBalancer service type
 - **✅ External-DNS**: Automatic DNS management  
 - **✅ ArgoCD**: GitOps deployment and management
-- **✅ Consistent Pattern**: Follows exact same structure as other services
+- **✅ Kustomize + Helm**: Same deployment pattern
 
-## 📝 Following Project Patterns
+## 📝 Following Longhorn Pattern
 
-This implementation **exactly matches** your project's patterns:
+This implementation **exactly matches** your Longhorn pattern:
 
-| Pattern | Example Service | Jellyfin Implementation |
-|---------|----------------|------------------------|
-| Directory structure | `transmission/` | `jellyfin/` |
-| ArgoCD app | `transmission.yaml` | `jellyfin.yaml` |
-| Kustomization | `transmission/kustomization.yaml` | `jellyfin/kustomization.yaml` |
-| Service type | LoadBalancer + MetalLB | ✅ Same |
-| Storage | Longhorn PVCs | ✅ Same |
-| Namespace | `default` | ✅ Same |
+| Pattern | Longhorn | Jellyfin |
+|---------|----------|----------|
+| ArgoCD app | `longhorn.yaml` | ✅ `jellyfin.yaml` |
+| Directory | `longhorn/` | ✅ `jellyfin/` |
+| Kustomization | `helmCharts` + `valuesInline` | ✅ Same |
+| Namespace | `longhorn-system` | ✅ `jellyfin` |
+| Chart source | `charts.longhorn.io` | ✅ `charts.truecharts.org` |
+| Resources | `namespace.yaml` | ✅ Same |
 
-This ensures consistency with your existing infrastructure and maintenance practices! 🎉
+## 🎯 Benefits of Helm Chart Approach
+
+### Over Raw Manifests:
+- **🔧 Professional maintenance** - TrueCharts team updates
+- **🛡️ Security hardening** - Built-in security best practices  
+- **⚡ Advanced features** - GPU transcoding, monitoring, backup
+- **📚 Comprehensive options** - Hundreds of configuration options
+- **🔄 Easy updates** - Just change version number
+
+### Following Your Pattern:
+- **✅ Consistent** - Same as Longhorn deployment method
+- **✅ GitOps** - Managed through Git like other services
+- **✅ Kustomize** - Uses your existing tooling
+- **✅ Namespace isolation** - Dedicated namespace like Longhorn
+
+This ensures the **same operational experience** as your Longhorn deployment! 🎉

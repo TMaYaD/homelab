@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     name: in-cluster
-    namespace: default
+    namespace: jellyfin
   project: default
   source:
     path: jellyfin
