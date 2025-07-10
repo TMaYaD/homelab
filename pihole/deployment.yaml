@@ -33,12 +33,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: pihole
-          env:
-            - name: FTLCONF_webserver_api_password
-              valueFrom:
-                secretKeyRef:
-                  name: pihole
-                  key: password
+            - secretRef:
+                name: pihole
           resources:
             limits:
               memory: "64Mi"
