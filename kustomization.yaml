@@ -15,6 +15,7 @@ resources:
   - mosquitto.yaml
   - pihole.yaml
   - samba.yaml
+  - sealed-secrets.yaml
   # - sickgear.yaml
   - transmission.yaml
   # - wyze-bridge.yaml
