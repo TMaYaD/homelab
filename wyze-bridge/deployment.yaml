@@ -14,17 +14,9 @@ spec:
       containers:
       - name: wyze-bridge
         image: mrlt8/wyze-bridge:latest
-        env:
-          - name: WYZE_EMAIL
-            valueFrom:
-              secretKeyRef:
-                name: wyze-bridge
-                key: email
-          - name: WYZE_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: wyze-bridge
-                key: password
+        envFrom:
+          - secretRef:
+              name: wyze-bridge
         resources:
           limits:
             memory: "128Mi"
