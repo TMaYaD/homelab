@@ -1,0 +1,4 @@
+machine:
+    # Provides machine specific network configuration options.
+    network:
+        hostname: talos-controller-2

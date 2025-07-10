@@ -1,6 +1,9 @@
 # `curl -X POST --data-binary @installer.yaml https://factory.talos.dev/schematics`
-# More info: https://www.talos.dev/v1.6/talos-guides/install/boot-assets/
+# More info: https://www.talos.dev/v1.9/talos-guides/install/boot-assets/
 
+overlay:
+    image: siderolabs/sbc-raspberrypi
+    name: rpi_generic
 customization:
     systemExtensions:
         officialExtensions:
