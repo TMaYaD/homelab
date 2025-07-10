@@ -75,7 +75,7 @@ sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 Get the public key from the cluster:
 
 ```bash
-kubeseal --fetch-cert --controller-name=sealed-secrets-controller --controller-namespace=kube-system > public-key.pem
+kubeseal --fetch-cert > public-key.pem
 ```
 
 **Note:** Once you have the public key file, you can use kubeseal offline without cluster access for encryption.
