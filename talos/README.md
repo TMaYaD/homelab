@@ -14,7 +14,7 @@ talosctl gen config \
   --config-patch @network.patch.yaml \
   --config-patch @rpi.patch.yaml \
   --config-patch @local-storage.patch.yaml \
-  talos https://10.10.10.6:6443
+  talos https://10.10.11.1:6443
 ```
 
 Apply the generated config to the machine
