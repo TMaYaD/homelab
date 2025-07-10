@@ -3,15 +3,13 @@ kind: Kustomization
 
 resources:
   - deployment.yaml
+  - secret.sealed.yaml
   - service.yaml
 
 configMapGenerator:
 - name: mosquitto
   files:
   - mosquitto.conf
-# - name: mosquitto-conf.d
-#   files:
-#   - flespi.conf
 
 generatorOptions:
  disableNameSuffixHash: true
