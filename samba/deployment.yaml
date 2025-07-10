@@ -26,13 +26,12 @@ spec:
             - "-s"
             - share;/smbshare/;yes;no;no;all;none
             - "-p"
+          envFrom:
+            - secretRef:
+                name: samba
           env:
             - name: PERMISSIONS
               value: "0777"
-            - name: USERNAME
-              value: transmission
-            - name: PASSWORD
-              value: transmission
             - name: USERID
               value: "1000"
             - name: GROUPID
