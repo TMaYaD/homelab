@@ -36,7 +36,10 @@ spec:
             - name: USER
               value: "transmission"
             - name: PASS
-              value: "transmission"
+              valueFrom:
+                secretKeyRef:
+                  name: transmission
+                  key: password
             - name: PUID
               value: "1000"
             - name: PGID
