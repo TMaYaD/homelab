@@ -3,3 +3,12 @@
 *.zip
 
 !.vscode/settings.json
+
+# Sealed Secrets
+sealed-secrets-master-key-backup.yaml
+sealed-secrets-backup-*.yaml
+public-key.pem
+temp-private-key.yaml
+
+# Plain text secrets (use .example.yaml templates instead)
+# See individual folder .gitignore files for specific exclusions
