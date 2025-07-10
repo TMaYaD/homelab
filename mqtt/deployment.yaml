@@ -17,13 +17,13 @@ spec:
       containers:
         - name: broker
           image: eclipse-mosquitto:2.0.18
-          # resources:
-          #   limits:
-          #     memory: "0.6Gi"
-          #     cpu: "300m"
-          #   requests:
-          #     memory: "0.2Gi"
-          #     cpu: "150m"
+          resources:
+            limits:
+              memory: "0.6Gi"
+              cpu: "300m"
+            requests:
+              memory: "0.2Gi"
+              cpu: "150m"
           ports:
             - name: mqtt
               containerPort: 1883
@@ -33,13 +33,13 @@ spec:
             - name: config
               mountPath: "/mosquitto/config"
               readOnly: true
-            # - name: conf.d
-            #   mountPath: "/mosquitto/config/conf.d"
-            #   readOnly: true
+            - name: conf-d
+              mountPath: "/mosquitto/config/conf.d"
+              readOnly: true
       volumes:
         - name: config
           configMap:
             name: mosquitto
-        # - name: conf.d
-        #   configMap:
-        #     name: mosquitto-conf.d
+        - name: conf-d
+          secret:
+            secretName: mosquitto-conf.d
