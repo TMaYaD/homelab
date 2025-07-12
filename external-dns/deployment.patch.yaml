@@ -13,7 +13,7 @@ spec:
             secretKeyRef:
               # Change this if you gave the secret a different name
               name: pihole
-              key: password
+              key: FTLCONF_webserver_api_password
         args:
         - --source=service
         - --source=ingress
