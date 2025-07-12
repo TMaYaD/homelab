@@ -45,8 +45,8 @@ spec:
               mountPath: /cache
             - name: config
               mountPath: /config
-            - name: media
-              mountPath: /data
+            - name: downloads
+              mountPath: /data/downloads
       volumes:
         - name: cache
           persistentVolumeClaim:
@@ -54,6 +54,6 @@ spec:
         - name: config
           persistentVolumeClaim:
             claimName: jellyfin-config
-        - name: media
+        - name: downloads
           persistentVolumeClaim:
-            claimName: jellyfin-media
+            claimName: downloads
