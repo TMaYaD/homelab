@@ -17,3 +17,13 @@ helmCharts:
 
 resources:
   - namespace.yaml
+
+patches:
+  - target:
+      kind: Service
+      name: longhorn-frontend
+      namespace: longhorn-system
+    patch: |
+      - op: remove
+        path: /spec/ports/0/nodePort
+
