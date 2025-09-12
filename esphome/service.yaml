@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: esphome
   annotations:
-    # metallb.universe.tf/allow-shared-ip: "esphome-shared-ip"
-    metallb.universe.tf/address-pool: address-pool
+    # metallb.io/allow-shared-ip: "esphome-shared-ip"
+    metallb.io/address-pool: address-pool
     external-dns.alpha.kubernetes.io/hostname: esphome.local
 spec:
   selector:

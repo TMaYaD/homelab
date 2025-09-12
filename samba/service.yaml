@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: samba
   annotations:
-    metallb.universe.tf/address-pool: address-pool
+    metallb.io/address-pool: address-pool
     external-dns.alpha.kubernetes.io/hostname: samba.local
 spec:
   selector:
