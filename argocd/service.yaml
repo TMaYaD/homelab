@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: argocd-server
   annotations:
-    metallb.universe.tf/address-pool: address-pool
+    metallb.io/address-pool: address-pool
     external-dns.alpha.kubernetes.io/hostname: argocd.local
 spec:
   type: LoadBalancer

@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: caddy
   annotations:
-    # metallb.universe.tf/allow-shared-ip: "home-assistant-shared-ip"
-    metallb.universe.tf/loadBalancerIPs: 10.10.10.100
+    # metallb.io/allow-shared-ip: "home-assistant-shared-ip"
+    metallb.io/loadBalancerIPs: 10.10.10.100
     external-dns.alpha.kubernetes.io/hostname: caddy.local
 spec:
   selector:
