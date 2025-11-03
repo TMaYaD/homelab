@@ -8,4 +8,4 @@ resources:
 
 images:
   - name: lscr.io/linuxserver/jellyfin
-    newTag: 10.11.1
+    newTag: 10.11.2
