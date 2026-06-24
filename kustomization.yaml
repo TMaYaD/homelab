@@ -17,5 +17,6 @@ resources:
   - samba.yaml
   - sealed-secrets.yaml
   # - sickgear.yaml
+  - syncthing.yaml
   - transmission.yaml
   # - wyze-bridge.yaml
