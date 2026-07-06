@@ -4,8 +4,7 @@ kind: Kustomization
 configMapGenerator:
 - name: home-assistant
   files:
-  - configuration.yaml
-  - ui-lovelace.yaml
+  - config/configuration.yaml
 
 # secretGenerator:
 # - name: home-assistant
