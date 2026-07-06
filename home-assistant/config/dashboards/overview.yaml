@@ -12,13 +12,13 @@ strategy:
     domains:
       _:
         hide_config_entities: true
-    chips:
+    badges:
       light_count: false
       fan_count: false
       cover_count: false
       switch_count: false
       climate_count: false
-      extra_chips:
+      extra_badges:
       - type: entity
         entity: scene.bedtime
         content_info: name

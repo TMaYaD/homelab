@@ -8,7 +8,7 @@ strategy:
     domains:
       _:
         hide_config_entities: true
-    chips:
+    badges:
       light_count: false
       fan_count: false
       cover_count: false
