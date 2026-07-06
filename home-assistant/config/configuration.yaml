@@ -1,0 +1,32 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+camera:
+  - platform: ffmpeg
+    input: rtsp://127.0.0.1:8554/kids-bed
+
+http:
+    use_x_forwarded_for: true
+    trusted_proxies:
+      - 10.10.11.1
+      - 10.10.11.2
+      - 10.10.11.3
+      - 10.10.11.4
+      - 10.10.11.5
+
+command_line:
+  - sensor:
+      unique_id: "usg_load_balance_raw"
+      name: "USG Load Balance Raw"
+      command: ssh eGPY@10.10.8.1 -q -i /config/.ssh/id_ed25519 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o PubkeyAcceptedKeyTypes=+ssh-ed25519 "vbash -ic 'show load-balance status' | grep 'interface\|carrier\|status\|gateway\|weight\|WAN\|Local' | sed 's/ *:/:/g;s/^ *//g'"
+  
+template: !include usg-wan-stats.yaml

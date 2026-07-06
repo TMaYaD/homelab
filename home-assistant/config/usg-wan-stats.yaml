@@ -1,0 +1,65 @@
+- sensor:
+    - name: "USG WAN1 Status"
+      state: >
+        {% set raw = states('sensor.usg_load_balance_raw') %}
+        {% set block = raw | regex_findall('interface *: eth0([\\s\\S]+?)(?=interface|$)') | first %}
+        {{ block | regex_findall('status *: (.+)', ignorecase=True) | first or 'unavailable' }}
+      attributes:
+        interface: "eth0"
+        carrier: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: eth0([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('carrier *: (.+)', ignorecase=True) | first or 'unknown' }}
+        gateway: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: eth0([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('gateway *: (.+)', ignorecase=True) | first or 'unknown' }}
+        weight: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: eth0([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('weight *: (.+)', ignorecase=True) | first or '0%' }}
+        flows_wan_out: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: eth0([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('WAN Out *: (\\d+)', ignorecase=True) | first or 0 }}
+        flows_wan_in: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: eth0([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('WAN In *: (\\d+)', ignorecase=True) | first or 0 }}
+        flows_local_out: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: eth0([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('Local Out *: (\\d+)', ignorecase=True) | first or 0 }}
+
+    - name: "USG WAN2 Status"
+      state: >
+        {% set raw = states('sensor.usg_load_balance_raw') %}
+        {% set block = raw | regex_findall('interface *: pppoe1([\\s\\S]+?)(?=interface|$)') | first %}
+        {{ block | regex_findall('status *: (.+)', ignorecase=True) | first or 'unavailable' }}
+      attributes:
+        interface: "pppoe1"
+        carrier: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: pppoe1([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('carrier *: (.+)', ignorecase=True) | first or 'unknown' }}
+        gateway: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: pppoe1([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('gateway *: (.+)', ignorecase=True) | first or 'unknown' }}
+        weight: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: pppoe1([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('weight *: (.+)', ignorecase=True) | first or '0%' }}
+        flows_wan_out: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: pppoe1([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('WAN Out *: (\\d+)', ignorecase=True) | first or 0 }}
+        flows_wan_in: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: pppoe1([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('WAN In *: (\\d+)', ignorecase=True) | first or 0 }}
+        flows_local_out: >
+          {% set raw = states('sensor.usg_load_balance_raw') %}
+          {% set block = raw | regex_findall('interface *: pppoe1([\\s\\S]+?)(?=interface|$)') | first %}
+          {{ block | regex_findall('Local Out *: (\\d+)', ignorecase=True) | first or 0 }}
+

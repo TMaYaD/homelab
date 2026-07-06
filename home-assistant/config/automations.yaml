@@ -1,0 +1,203 @@
+- id: '1738018411052'
+  alias: Person activated Bar ambient light
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.bar_person
+      include_sun: sun_enabled
+      include_night_lights: night_lights_enabled
+      night_lights_conditions:
+      - sun_enabled
+      night_lights:
+        entity_id: light.ambient_lights
+      light_switch:
+        entity_id: light.ambient_lights
+- id: '1739123380880'
+  alias: Guest bedtime
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - scene.bedtime
+    to:
+  conditions:
+  - type: is_value
+    condition: device
+    device_id: 17298dc26dabfcf2276630260ec0f467
+    entity_id: affdc86aec9813b74657103ce5bac7d4
+    domain: sensor
+    below: 1
+  actions:
+  - action: fan.turn_off
+    metadata: {}
+    data: {}
+    target:
+      area_id: guest
+  - action: light.turn_off
+    metadata: {}
+    data:
+      transition: 2
+    target:
+      area_id: guest
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      area_id: guest
+  mode: single
+- id: '1739373251284'
+  alias: Person activated terrace lights
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.terrace_person
+      night_lights:
+        entity_id: light.terrace_lights
+- id: '1739471354817'
+  alias: Daily story time
+  description: ''
+  triggers:
+  - trigger: time
+    at: '20:30:00'
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data:
+      transition: 2
+    target:
+      entity_id: scene.story_time
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - action: scene.turn_on
+    metadata: {}
+    data:
+      transition: 2
+    target:
+      entity_id: scene.story_time
+  mode: single
+- id: '1746820483861'
+  alias: Person activated library lights
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.library_person
+      include_sun: sun_enabled
+      include_night_lights: night_lights_enabled
+      night_lights_conditions:
+      - sun_enabled
+      night_lights:
+        entity_id: light.library_fan_light
+      light_switch:
+        entity_id: light.library_fan_light
+- id: '1747351753965'
+  alias: Person activated living lights
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.dining_person
+      night_lights:
+        entity_id:
+        - light.living_fountain_lights_living_fountain_lights
+        - light.kitchen_down_lights
+      night_lights_conditions:
+      - time_enabled
+      include_night_lights: night_lights_disabled
+      night_light_brightness: 5
+      night_glow_light_brightness: 10
+      include_night_glow_light_control:
+      - use_brightness
+      - use_transition
+      include_night_glow: night_glow_enabled
+      night_glow_lights:
+        entity_id: light.walkway_lights
+      include_night_light_control: []
+      light_brightness: 20
+      include_light_control: []
+      light_switch:
+        entity_id:
+        - light.living_fountain_lights_living_fountain_lights
+        - light.kitchen_down_lights
+      night_lights_before_time: 06:00:00
+      light_colour_temperature: 2000
+      include_time: time_enabled
+      before_time: 06:00:00
+      after_time: '21:00:00'
+- id: '1751750094893'
+  alias: 'Open curtains in the morning '
+  description: ''
+  triggers:
+  - trigger: sun
+    event: sunrise
+    offset: 0
+  conditions: []
+  actions:
+  - action: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.master_north_blockout_curtain_master_north_blockout_curtain
+      - cover.kids_curtain_kids_curtain
+  mode: single
+- id: '1752331969363'
+  alias: Turn TV off for bedtime
+  description: ''
+  triggers:
+  - trigger: time
+    at: '19:00:00'
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.living_tv
+  mode: single
+- id: '1754334655802'
+  alias: WAN down Monitor
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.usg_wan1_status
+    - sensor.usg_wan2_status
+    to: inactive
+    from: active
+  conditions: []
+  actions:
+  - action: notify.persistent_notification
+    metadata: {}
+    data:
+      message: '{{ trigger.entity_id }} is down.'
+      data:
+        notification_id: '{{trigger.entity_id}}_wan_status'
+  mode: single
+- id: '1754454707259'
+  alias: WAN up monitor
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.usg_wan1_status
+    - sensor.usg_wan2_status
+    to: active
+    from: inactive
+  conditions: []
+  actions:
+  - action: persistent_notification.dismiss
+    metadata: {}
+    data:
+      notification_id: '{{trigger.entity_id}}_wan_status'
+  mode: single

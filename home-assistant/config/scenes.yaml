@@ -1,0 +1,335 @@
+- id: '1735842507749'
+  name: Bedtime
+  entities:
+    light.aux_living_lights:
+      supported_color_modes:
+      - brightness
+      color_mode:
+      brightness:
+      friendly_name: Living-Lights Aux. Living Lights
+      supported_features: 40
+      state: 'off'
+    light.living_lights:
+      supported_color_modes:
+      - brightness
+      color_mode:
+      brightness:
+      friendly_name: Living-Lights Living Lights
+      supported_features: 40
+      state: 'off'
+    light.walkway_lights:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 52
+      friendly_name: Living-Lights Walkway Lights
+      supported_features: 40
+      state: 'on'
+    light.kitchen_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Kitchen-Main Kitchen Lights
+      supported_features: 8
+      state: 'off'
+    light.appliance_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Kitchen-Main Appliance Lights
+      supported_features: 8
+      state: 'off'
+    light.kitchen_down_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Kitchen-Main kitchen Down Lights
+      supported_features: 8
+      state: 'off'
+    light.plant_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Kitchen-Main Plant Lights
+      supported_features: 8
+      state: 'off'
+    fan.kitchen_fan:
+      friendly_name: Kitchen-Side kitchen Fan
+      supported_features: 48
+      state: 'off'
+    light.island_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Kitchen-Side Island Lights
+      supported_features: 8
+      state: 'off'
+    light.wet_kitchen_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Kitchen-Side Wet Kitchen Lights
+      supported_features: 8
+      state: 'off'
+    light.kitchen_work_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Kitchen-Side Kitchen Work Lights
+      supported_features: 8
+      state: 'off'
+    light.portico_lights_2:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Drawing-Main Portico Lights
+      supported_features: 8
+      state: 'off'
+    light.chandelier_2:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Drawing-Main Chandelier
+      supported_features: 8
+      state: 'on'
+    switch.drawing_socket_0_2:
+      friendly_name: Drawing-Main drawing Socket 0
+      state: 'off'
+    light.drawing_lights_2:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Drawing-Main Drawing Lights
+      supported_features: 8
+      state: 'off'
+    light.map_light:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Library-Main Map Light
+      supported_features: 8
+      state: 'off'
+    light.stair_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Bar-Main Stair Lights
+      supported_features: 8
+      state: 'off'
+    light.ambient_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Bar-Main Ambient Lights
+      supported_features: 8
+      state: 'off'
+    light.lounge_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Bar-Main Lounge Lights
+      supported_features: 8
+      state: 'off'
+    light.bar_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Bar-Main Bar Lights
+      supported_features: 8
+      state: 'off'
+    light.terrace_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Bar-Terrace Terrace Lights
+      supported_features: 8
+      state: 'off'
+    switch.bar_socket_0:
+      friendly_name: Bar-Terrace bar Socket 0
+      state: 'off'
+    fan.living_fan:
+      preset_modes: []
+      percentage: 80
+      percentage_step: 20
+      preset_mode: ''
+      friendly_name: Living-Fan living fan
+      supported_features: 49
+      state: 'off'
+    number.living_fan_light:
+      min: 0
+      max: 3
+      step: 1
+      mode: auto
+      friendly_name: Living-Fan living fan light
+      state: '0.0'
+    number.living_fan_sleep_timer:
+      min: 0
+      max: 8
+      step: 2
+      mode: auto
+      friendly_name: Living-Fan living fan sleep timer
+      state: '0.0'
+    select.living_fan_mode:
+      options:
+      - Turbo
+      - Sleep
+      - Breeze
+      - Reverse
+      - Normal
+      friendly_name: Living-Fan living fan mode
+      state: Normal
+    fan.dining_fan:
+      friendly_name: Dining-Main dining Fan
+      supported_features: 48
+      state: 'off'
+    light.dining_lights_2:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Dining-Main Dining Lights
+      supported_features: 8
+      state: 'off'
+    light.death_star:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Dining-Main Death Star
+      supported_features: 8
+      state: 'off'
+    light.library_lights:
+      supported_color_modes:
+      - brightness
+      color_mode:
+      brightness:
+      friendly_name: Library-Lights library lights
+      supported_features: 40
+      state: 'off'
+    fan.library_fan:
+      preset_modes: []
+      percentage: 33
+      percentage_step: 33.333333333333336
+      preset_mode: ''
+      friendly_name: Library-Fan library fan
+      supported_features: 49
+      state: 'off'
+    light.library_fan_light:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Library-Fan library fan light
+      supported_features: 8
+      state: 'off'
+  icon: mdi:bed
+  metadata: {}
+- id: '1738164797351'
+  name: Story time
+  entities:
+    light.yeelight_ceiling4_0x7c4bfab:
+      min_color_temp_kelvin: 2700
+      max_color_temp_kelvin: 6500
+      effect_list:
+      - Slow Temp
+      - Stop
+      supported_color_modes:
+      - color_temp
+      effect:
+      color_mode: color_temp
+      brightness: 3
+      color_temp_kelvin: 2700
+      hs_color:
+      - 28.395
+      - 65.723
+      rgb_color:
+      - 255
+      - 167
+      - 87
+      xy_color:
+      - 0.525
+      - 0.388
+      flowing: false
+      music_mode: false
+      night_light: true
+      friendly_name: Babymoon
+      supported_features: 44
+      state: 'on'
+    light.yeelight_ceiling4_0x7c4bfab_ambilight:
+      min_color_temp_kelvin: 1700
+      max_color_temp_kelvin: 6500
+      effect_list:
+      - Strobe color
+      - Police
+      - Christmas
+      - RGB
+      - Random Loop
+      - Fast Random Loop
+      - LSD
+      - Slowdown
+      - Night Mode
+      - Date Night
+      - Movie
+      - Sunrise
+      - Sunset
+      - Romance
+      - Happy Birthday
+      - Disco
+      - Strobe epilepsy!
+      - Alarm
+      - Police2
+      - WhatsApp
+      - Facebook
+      - Twitter
+      - Home
+      - Candle Flicker
+      - Tea Time
+      - Slow Temp
+      - Stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      - rgb
+      effect:
+      color_mode: rgb
+      brightness: 3
+      color_temp_kelvin:
+      hs_color:
+      - 2.124
+      - 88.627
+      rgb_color:
+      - 255
+      - 37
+      - 29
+      xy_color:
+      - 0.683
+      - 0.303
+      flowing: false
+      music_mode: false
+      night_light: true
+      friendly_name: Babymoon Ambilight
+      supported_features: 44
+      state: 'on'
+    fan.kids_fan:
+      friendly_name: '  kids Fan'
+      supported_features: 48
+      state: 'on'
+    light.cloud_lights:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: '  Cloud Lights'
+      supported_features: 8
+      state: 'on'
+    light.baby_moon:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: '  Baby Moon'
+      supported_features: 8
+      state: 'on'
+    switch.kids_socket_5:
+      friendly_name: '  kids Socket 5'
+      state: unavailable
+    switch.kids_socket_6:
+      friendly_name: '  kids Socket 6'
+      state: unavailable
+  icon: mdi:book-open-blank-variant-outline
+  metadata: {}
