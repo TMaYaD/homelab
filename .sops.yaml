@@ -1,0 +1,8 @@
+# SOPS creation rules. Value-level encryption only — keys/structure stay
+# plaintext. Recipients: the operator key (laptop / password manager) now;
+# the HA reconciler add-on generates its own age key on first start
+# (sealed-secrets style) and its public key gets appended here then.
+# See home-assistant/GITOPS.md.
+creation_rules:
+  - path_regex: home-assistant/config/secrets\.sops\.yaml$
+    age: age1lt8uhkqym0x4ld3ufuj79pglflx2kw2gmnd25c804z6k3mtjl36q08n9x2
