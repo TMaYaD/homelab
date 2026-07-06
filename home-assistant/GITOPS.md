@@ -24,8 +24,10 @@ ArgoCD semantics, adapted for HA:
   user-written message), or **ignore** (persistent rules for known-noisy
   paths, à la ArgoCD `ignoreDifferences`).
 
-The reconciler is a custom HAOS add-on (separate repo, TBD) — existing
-tools (git-ha-ppens, Git Pull, Git Exporter) were evaluated and rejected:
+The reconciler is a custom HAOS add-on —
+[ha-git-ops](https://github.com/TMaYaD/ha-git-ops), local checkout at
+`~/Documents/tmayad/ha-git-ops` — existing tools (git-ha-ppens, Git
+Pull, Git Exporter) were evaluated and rejected:
 none support a monorepo subfolder, and their secrets story is exclusion
 or censoring, not encryption.
 
