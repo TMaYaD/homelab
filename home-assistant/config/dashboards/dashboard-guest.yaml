@@ -1,0 +1,48 @@
+strategy:
+  options:
+    areas:
+      bar:
+        hidden: true
+      dining:
+        order: 4
+        show_camera: true
+      drawing:
+        order: 2
+        show_camera: true
+      guest:
+        order: 6
+      kids:
+        hidden: true
+      kitchen:
+        order: 5
+        show_camera: true
+      library:
+        hidden: true
+      living:
+        order: 3
+        show_camera: true
+      master:
+        hidden: true
+      office:
+        hidden: true
+      terrace:
+        hidden: true
+      theater:
+        hidden: true
+      undisclosed:
+        hidden: true
+    badges:
+      climate_count: false
+      cover_count: false
+      fan_count: false
+      light_count: false
+      switch_count: false
+    domains:
+      _:
+        hide_config_entities: true
+    home_view:
+      hidden:
+        - areasTitle
+        - persons
+  type: custom:mushroom-strategy
+views: []
