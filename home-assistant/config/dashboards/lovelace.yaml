@@ -43,6 +43,14 @@ strategy:
       climate_count: false
       cover_count: false
       extra_badges:
+        - content_info: state
+          entity: sensor.quick_timer_monitor
+          icon: mdi:timer-outline
+          icon_color: amber
+          tap_action:
+            action: navigate
+            navigation_path: /lovelace/timers
+          type: entity
         - content_info: name
           entity: scene.bedtime
           icon_color: primary
@@ -60,6 +68,18 @@ strategy:
     domains:
       _:
         hide_config_entities: true
+    extra_views:
+      - cards:
+          - title: Active Timers
+            type: custom:quick-timer-overview-card
+          - default_delay: 30
+            default_unit: minutes
+            mode: full
+            type: custom:quick-timer-card
+        icon: mdi:timer-outline
+        path: timers
+        subview: true
+        title: Timers
     home_view:
       hidden:
         - areasTitle
