@@ -8,7 +8,6 @@ resources:
   - caddy.yaml
   # - esphome.yaml
   - external-dns.yaml
-  - home-assistant.yaml
   - jellyfin.yaml
   - longhorn.yaml
   - metallb.yaml

@@ -1,3 +1,0 @@
-# Plaintext HA secrets must never be committed — only the SOPS-encrypted
-# secrets.sops.yaml belongs in git (see GITOPS.md).
-secrets.yaml

@@ -98,11 +98,11 @@ kubeseal --fetch-cert > public-key.pem
 
    ```bash
    # Copy and edit example template with real values
-   cp home-assistant/secrets.example.yaml home-assistant/secrets.yaml
+   cp path/to/app/secrets.example.yaml path/to/app/secrets.yaml
    # Edit secrets.yaml with your actual secret values
 
    # Encrypt the secret file
-   kubeseal --cert=public-key.pem -f home-assistant/secrets.yaml -w home-assistant/secrets.sealed.yaml
+   kubeseal --cert=public-key.pem -f path/to/app/secrets.yaml -w path/to/app/secrets.sealed.yaml
    ```
 
    **⚠️ Important:** The sealed secret files in this repository contain placeholder encrypted data. They must be replaced with actual encrypted secrets before applications will function correctly.
